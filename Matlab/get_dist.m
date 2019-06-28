@@ -28,10 +28,10 @@ end
 end
 res_table=table(dist);
 writetable(res_table,'timedist_H_3.csv');
-s1=load('s1.csv');
+s1=load('s1.csv');%在第一天出现的人员id，以及每个人在第一天呆的时间
 s2=load('s2.csv');
 s3=load('s3.csv');
-f1=load('f1.csv');
+f1=load('f1.csv');%在第一天没有出现的人员id
 f2=load('f2.csv');
 f3=load('f3.csv');
 [hs1,ws1]=size(s1);
@@ -40,12 +40,12 @@ f3=load('f3.csv');
 [hf1,wf1]=size(f1);
 [hf2,wf2]=size(f2);
 [hf3,wf3]=size(f3);
-for i=1:hs1
+for i=1:hs1%每个循环的目的就是考虑一个人在某一天出现而另一个人没有出现的情况
     t1=s1(i,1)-H+1;
     x=s1(i,2);
     for j=1:hf1
         t2=f1(j)-H+1;
-        dist(t1,t2+1)=dist(t1,t2+1)+x;
+        dist(t1,t2+1)=dist(t1,t2+1)+x;%也就是要把两个人之间的距离加上t1在那一天出现的时间
         dist(t2,t1+1)=dist(t1,t2+1);
     end
 end
