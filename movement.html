@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="jquery-SearchBar/css/search-form.css">
+    <link rel="stylesheet" type="text/css" href="css/css3buttons.css">
+    <script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+    <script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
+    <script src="layer/layer.js"></script>
+    <script src="graph.js"></script>
+    <script src="parallel.js"></script>
+    <script src="radar.js"></script>
+</head>
+<body style="height: 100%; margin: 0; background-color: #333">
+<div ><button class="big pill button" onclick="showSelected()" ><span class="book icon"></span>Data</button></div>
+    <div id="block1" style="height: 105%; width: 65%; float: left;position: absolute; right: 560px;"></div>
+    <div id="block2" style="height: 57%; width: 42%; position: absolute; bottom: 320px; right: 1px;"></div>
+    <div id="block3" style="height: 40%; width: 40%; position: absolute; top: 450px; right: 1px"></div>
+<script type="text/javascript">
+    var dom = document.getElementById("block1");
+    var myChart = echarts.init(dom);
+    function searchToggle(obj, evt) {
+        var container = $(obj).closest('.search-wrapper');
+
+        if (!container.hasClass('active')) {
+            container.addClass('active');
+            evt.preventDefault();
+        } else if (container.hasClass('active') && $(obj).closest('.input-holder').length == 0) {
+            container.removeClass('active');
+            // clear input
+            var flag = false;
+            if (container.find('.search-input').val().length > 0) {
+                flag = true;
+            }
+            container.find('.search-input').val('');
+            if (flag) {
+                getParallel(0);
+            }
+        } else {
+            value = $(obj).prev().val().trim();
+            var one = parseInt(value);
+            if (isNaN(one) || one < 10000 || one >= 20000) one = 0;
+            myChart.clear();
+            getParallel(one);
+            getRelation("block2", one);
+            getRadar("block3",one);
+        }
+    }
+    window.onload=function () {
+        getRelation("block2",0);
+        getRadar("block3",0);
+        getParallel(0);
+    }
+</script>
+    <div class="search-wrapper" style="position: absolute; top: 70px;">
+        <div class="input-holder">
+            <input type="text" class="search-input"/>
+            <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
+        </div>
+        <span class="close" onclick="searchToggle(this, event);"></span>
+    </div>
+</body>
+</html>
