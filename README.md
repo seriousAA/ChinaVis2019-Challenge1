@@ -6,7 +6,7 @@
 
 ##### 第一部分 网页部分
 
-github page： https://seriousaa.github.io/ChinaVis2019-Challenge1/index.html
+github page： [https://seriousaa.github.io/ChinaVis2019-Challenge1/](https://seriousaa.github.io/ChinaVis2019-Challenge1/)
 
 目录
 
@@ -107,4 +107,7 @@ matlab由于对人员轨迹数据进行处理，以下将给出所用到的脚�
 整个比赛过程中的阶段性总结以及最后总结的论文，已经上传至GameIdeas目录下，有需要的朋友可以自行查看。
 
 ---
+##### 赛后反思 2019.7.12
+没有得奖真的好伤心，主要是觉得对不起自己这段时间花费的精力和时间（虽然得奖了也没什么卵用。。）
+找到二等奖开翼大佬的github，对比一下，反思一下自己的缺陷
 联系方式：1094420986@qq.com
