@@ -6,7 +6,7 @@
 
 ##### 第一部分 网页部分
 
-github page： https://seriousaa.github.io/ChinaVis2019-Challenge1/
+github page： https://seriousaa.github.io/ChinaVis2019-Challenge1/index.html
 
 目录
 
